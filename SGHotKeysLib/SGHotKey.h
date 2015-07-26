@@ -15,7 +15,7 @@
   NSString *name;
   
   SGKeyCombo *keyCombo;    
-  id target;
+  id __unsafe_unretained target;
   SEL action;
   
   EventHotKeyID hotKeyID;
@@ -23,13 +23,13 @@
 
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, retain) SGKeyCombo *keyCombo;
-@property (nonatomic, assign) id target;
+@property (nonatomic, strong) SGKeyCombo *keyCombo;
+@property (nonatomic, unsafe_unretained) id target;
 @property (nonatomic, assign) SEL action;
 @property (nonatomic, assign) EventHotKeyID hotKeyID;
 
-- (instancetype)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo;
-- (instancetype)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo target:(id)theTarget action:(SEL)theAction;
+- (instancetype)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo target:(id)theTarget action:(SEL)theAction NS_DESIGNATED_INITIALIZER;
 - (BOOL)matchesHotKeyID:(EventHotKeyID)theKeyID;
 - (void)invoke;
 

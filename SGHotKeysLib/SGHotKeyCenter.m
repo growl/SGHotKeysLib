@@ -34,10 +34,6 @@ static SGHotKeyCenter *sharedCenter = nil;
 	}	
 }
 
-- (void)dealloc {
-	[hotKeys release];
-	[super dealloc];
-}
 
 + (SGHotKeyCenter *)sharedCenter {    
 	return sharedCenter;
@@ -47,14 +43,14 @@ static SGHotKeyCenter *sharedCenter = nil;
 	//Usually already set by +initialize.
 	if (sharedCenter) {
 		//The caller expects to receive a new object, so implicitly retain it to balance out the caller's eventual release message.
-		return [sharedCenter retain];
+		return sharedCenter;
 	} else {
 		//When not already set, +initialize is our caller—it's creating the shared instance. Let this go through.
 		return [super allocWithZone:zone];
 	}
 }
 
-- (id) init {
+- (instancetype) init {
 	if (!hasInited) {
 		if ((self = [super init])) {
 			//Initialize the instance here.
@@ -98,7 +94,7 @@ static SGHotKeyCenter *sharedCenter = nil;
 	key = [NSValue valueWithPointer:carbonHotKey];
 	
 	if (theHotKey && key)
-		[hotKeys setObject:theHotKey forKey:key];
+		hotKeys[key] = theHotKey;
 	
 	[self _updateEventHandler];
 	
@@ -183,7 +179,7 @@ static SGHotKeyCenter *sharedCenter = nil;
 
 - (SGHotKey *)_hotKeyForCarbonHotKey:(EventHotKeyRef)carbonHotKey {
 	NSValue *key = [NSValue valueWithPointer:carbonHotKey];
-	return [hotKeys objectForKey:key];
+	return hotKeys[key];
 }
 
 - (EventHotKeyRef)_carbonHotKeyForHotKey:(SGHotKey *)hotKey {

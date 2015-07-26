@@ -18,7 +18,7 @@
 
 + (id)clearKeyCombo;
 + (instancetype)keyComboWithKeyCode:(NSInteger)theKeyCode modifiers:(NSInteger)theModifiers;
-- (instancetype)initWithKeyCode:(NSInteger)theKeyCode modifiers:(NSInteger)theModifiers;
+- (instancetype)initWithKeyCode:(NSInteger)theKeyCode modifiers:(NSInteger)theModifiers NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithPlistRepresentation:(id)thePlist;
 @property (nonatomic, readonly, strong) id plistRepresentation;

@@ -20,14 +20,13 @@
   if (currentTranslator == nil) {
     currentTranslator = [[SGKeyCodeTranslator alloc] initWithKeyboardLayout:currentKeyboardLayout];
   } else if ([currentTranslator keyboardLayout] != currentKeyboardLayout) {
-    [currentTranslator release];
     currentTranslator = [[SGKeyCodeTranslator alloc] initWithKeyboardLayout:currentKeyboardLayout];
   }
   
   return currentTranslator;
 }
 
-- (id)initWithKeyboardLayout:(TISInputSourceRef)theLayout {
+- (instancetype)initWithKeyboardLayout:(TISInputSourceRef)theLayout {
   if ((self = [super init]) != nil) {
     keyboardLayout = theLayout;
     CFDataRef uchr = TISGetInputSourceProperty(keyboardLayout, kTISPropertyUnicodeKeyLayoutData);

@@ -22,7 +22,7 @@
 
 + (id)currentTranslator;
 
-- (id)initWithKeyboardLayout:(TISInputSourceRef)theLayout;
+- (instancetype)initWithKeyboardLayout:(TISInputSourceRef)theLayout NS_DESIGNATED_INITIALIZER;
 - (NSString *)translateKeyCode:(short)theKeyCode;
 
 @end

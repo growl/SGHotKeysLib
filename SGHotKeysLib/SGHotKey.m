@@ -18,18 +18,12 @@
 @synthesize action;
 @synthesize hotKeyID;
 
-- (void)dealloc {
-  [identifier release];
-  [name release];
-  [keyCombo release];
-  [super dealloc];
-}
 
-- (id)init {
+- (instancetype)init {
   return [self initWithIdentifier:nil keyCombo:nil];
 }
 
-- (id)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo {
+- (instancetype)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo {
   if (self = [super init]) {
     self.identifier = theIdentifier;
     self.keyCombo = theCombo;
@@ -37,7 +31,7 @@
   
   return self;  
 }
-- (id)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo target:(id)theTarget action:(SEL)theAction {
+- (instancetype)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo target:(id)theTarget action:(SEL)theAction {
   if (self = [super init]) {
     self.identifier = theIdentifier;
     self.keyCombo = theCombo;
@@ -60,7 +54,7 @@
   if (theKeyCombo == nil)
     theKeyCombo = [SGKeyCombo clearKeyCombo];
   
-  keyCombo = [theKeyCombo retain];
+  keyCombo = theKeyCombo;
 }
 
 - (NSString *)description {
