@@ -28,8 +28,8 @@
 @property (nonatomic, assign) SEL action;
 @property (nonatomic, assign) EventHotKeyID hotKeyID;
 
-- (id)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo;
-- (id)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo target:(id)theTarget action:(SEL)theAction;
+- (instancetype)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo;
+- (instancetype)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo target:(id)theTarget action:(SEL)theAction;
 - (BOOL)matchesHotKeyID:(EventHotKeyID)theKeyID;
 - (void)invoke;
 

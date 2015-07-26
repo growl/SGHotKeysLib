@@ -21,7 +21,7 @@
 - (BOOL)registerHotKey:(SGHotKey *)theHotKey;
 - (void)unregisterHotKey:(SGHotKey *)theHotKey;
 
-- (NSArray *)allHotKeys;
+@property (nonatomic, readonly, copy) NSArray *allHotKeys;
 - (SGHotKey *)hotKeyWithIdentifier:(id)theIdentifier;
 
 @end

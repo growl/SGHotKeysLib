@@ -17,22 +17,22 @@
 @property (nonatomic, assign) NSInteger modifiers;
 
 + (id)clearKeyCombo;
-+ (id)keyComboWithKeyCode:(NSInteger)theKeyCode modifiers:(NSInteger)theModifiers;
-- (id)initWithKeyCode:(NSInteger)theKeyCode modifiers:(NSInteger)theModifiers;
++ (instancetype)keyComboWithKeyCode:(NSInteger)theKeyCode modifiers:(NSInteger)theModifiers;
+- (instancetype)initWithKeyCode:(NSInteger)theKeyCode modifiers:(NSInteger)theModifiers;
 
-- (id)initWithPlistRepresentation:(id)thePlist;
-- (id)plistRepresentation;
+- (instancetype)initWithPlistRepresentation:(id)thePlist;
+@property (nonatomic, readonly, strong) id plistRepresentation;
 
 - (BOOL)isEqual:(SGKeyCombo *)theCombo;
 
-- (BOOL)isClearCombo;
-- (BOOL)isValidHotKeyCombo;
+@property (nonatomic, getter=isClearCombo, readonly) BOOL clearCombo;
+@property (nonatomic, getter=isValidHotKeyCombo, readonly) BOOL validHotKeyCombo;
 
 @end
 
 @interface SGKeyCombo (UserDisplayAdditions)
-- (NSString *)description;
-- (NSString *)keyCodeString;
-- (NSUInteger)modifierMask;
+@property (nonatomic, readonly, copy) NSString *description;
+@property (nonatomic, readonly, copy) NSString *keyCodeString;
+@property (nonatomic, readonly) NSUInteger modifierMask;
 @end
 
