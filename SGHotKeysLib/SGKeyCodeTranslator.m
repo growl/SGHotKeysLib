@@ -50,7 +50,7 @@
   UniChar unicodeString[4];
   
   UCKeyTranslate(keyboardLayoutData, 
-                           keyCode, 
+                           (UInt16)keyCode,
                            kUCKeyActionDisplay, 
                            0, 
                            LMGetKbdType(), 

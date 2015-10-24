@@ -170,7 +170,7 @@ NSString * const kModifiersDictionaryKey = @"modifiers";
 	// special case: the modifiers for the "clear" key are 0x0
 	if ( [self isClearCombo] ) return @"";
 	
-  return [[self class] _stringForKeyCode:self.keyCode];
+  return [[self class] _stringForKeyCode:(short)self.keyCode];
 }
 
 - (NSUInteger)modifierMask {
@@ -188,7 +188,7 @@ NSString * const kModifiersDictionaryKey = @"modifiers";
   NSUInteger i, ret = 0;
   
   for (i = 0; i < 4; i++)  {
-    if (self.modifiers & modToChar[i][0]) {
+    if ((unsigned long)self.modifiers & modToChar[i][0]) {
       ret |= modToChar[i][1];
     }
   }
@@ -202,7 +202,7 @@ NSString * const kModifiersDictionaryKey = @"modifiers";
 	if ([self isValidHotKeyCombo]) {
 		desc = [NSString stringWithFormat: @"%@%@",
             [[self class] _stringForModifiers:self.modifiers],
-            [[self class] _stringForKeyCode:self.keyCode]];
+            [[self class] _stringForKeyCode:(short)self.keyCode]];
 	}
 	else {
     desc = NSLocalizedString(@"(None)", @"Hot Keys: Key Combo text for 'empty' combo" );
