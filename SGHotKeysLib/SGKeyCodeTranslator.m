@@ -26,6 +26,14 @@
   return currentTranslator;
 }
 
+- (instancetype)init
+{
+    if(self = [self initWithKeyboardLayout:nil])
+    {
+    }
+    return self;
+}
+
 - (instancetype)initWithKeyboardLayout:(TISInputSourceRef)theLayout {
   if ((self = [super init]) != nil) {
     keyboardLayout = theLayout;

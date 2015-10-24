@@ -26,13 +26,19 @@ NSString * const kModifiersDictionaryKey = @"modifiers";
   return [[self alloc] initWithKeyCode:theKeyCode modifiers:theModifiers];
 }
 
+- (instancetype)init
+{
+    if((self = [self initWithKeyCode:0 modifiers:0]))
+    {
+    }
+    return self;
+}
 
 - (instancetype)initWithKeyCode:(NSInteger)theKeyCode modifiers:(NSInteger)theModifiers {
   if (self = [super init]) {
     keyCode = theKeyCode;
     modifiers = theModifiers;
   }
-  
   return self;
 }
 
