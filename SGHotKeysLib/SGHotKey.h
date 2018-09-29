@@ -30,6 +30,7 @@
 
 - (instancetype)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithIdentifier:(id)theIdentifier keyCombo:(SGKeyCombo *)theCombo target:(id)theTarget action:(SEL)theAction NS_DESIGNATED_INITIALIZER;
+- (id)initWithUserDefaultsKey:(NSString *)theKey target:(id)theTarget action:(SEL)theAction;
 - (BOOL)matchesHotKeyID:(EventHotKeyID)theKeyID;
 - (void)invoke;
 

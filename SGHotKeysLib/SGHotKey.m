@@ -42,6 +42,15 @@
   return self;
 }
 
+- (id)initWithUserDefaultsKey:(NSString *)theKey target:(id)theTarget action:(SEL)theAction {
+	id keyComboPlist = [[NSUserDefaults standardUserDefaults] objectForKey:theKey];
+	SGKeyCombo *theKeyCombo = [[SGKeyCombo alloc] initWithPlistRepresentation:keyComboPlist];
+	self = [self initWithIdentifier:theKey keyCombo:theKeyCombo target:theTarget action:theAction];
+	[theKeyCombo release];
+	
+	return self;
+}
+
 - (BOOL)matchesHotKeyID:(EventHotKeyID)theKeyID {
   return (hotKeyID.id == theKeyID.id) && (hotKeyID.signature == theKeyID.signature);
 }
